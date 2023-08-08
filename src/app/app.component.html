@@ -1,0 +1,39 @@
+<div class="container">
+  <h3 class="text-center" mt-5 mb-5>Angular Basic Pagination</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Title</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="
+          let post of posts
+            | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        "
+      >
+        <th scope="row">{{ post._id }}</th>
+        <td>{{ post.trips }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center">
+    <pagination-controls
+      class="pagi"
+      previousLabel="Prev"
+      nextLabel="next"
+      (pageChange)="gty((page = $event))"
+    >
+    </pagination-controls>
+  </div>
+</div>

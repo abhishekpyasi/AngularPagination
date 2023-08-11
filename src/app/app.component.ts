@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { PostService } from "./post.service";
+import { ModalService } from "./modal/modal.service";
 
 @Component({
   selector: "app-root",
@@ -15,7 +16,10 @@ export class AppComponent {
   page: number = 0;
   tableSize: number = 7;
 
-  constructor(private postService: PostService) {}
+  constructor(
+    private postService: PostService,
+    private modalService: ModalService
+  ) {}
 
   ngOnInit() {
     this.getPostsfrombackend();
@@ -43,5 +47,9 @@ export class AppComponent {
     this.page = currentpage;
 
     this.getPostsfrombackend();
+  }
+
+  openModal() {
+    this.modalService.openModal("Example Modal");
   }
 }
